@@ -1,5 +1,17 @@
 let saldo = 3800;
 
+type Transacao = {
+	tipoTransacao: TipoTransacao;
+	valor: number;
+	data: Date;
+};
+
+enum TipoTransacao {
+	DEPOSITO = "Depósito",
+	TRANSFERENCIA = "Transferência",
+	PAGAMENTO_BOLETO = "Pagamento de Boleto",
+}
+
 const elementoSaldo = document.querySelector(
 	".saldo-valor .valor"
 ) as HTMLElement;
@@ -42,8 +54,8 @@ elementoFormulario.addEventListener("submit", function (event) {
 
 	elementoSaldo.textContent = saldo.toString();
 
-	const novaTransacao = {
-		tipoTransacao: tipoTransacao,
+	const novaTransacao: Transacao = {
+		tipoTransacao: TipoTransacao.PAGAMENTO_BOLETO,
 		valor: valor,
 		data: data,
 	};
